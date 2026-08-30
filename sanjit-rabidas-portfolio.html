@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sanjit Rabidas — Video Editor, Graphic Designer & Writer.">
+<title>Sanjit Rabidas — Creative Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#070707; --panel:#101010; --panel2:#151515; --text:#f3f1eb;
+  --muted:#9a9a94; --line:rgba(255,255,255,.11); --accent:#d7ff45;
+  --max:1200px; --radius:24px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text); font-family:"DM Sans",sans-serif;
+  overflow-x:hidden; line-height:1.6;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;z-index:99;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;height:76px;
+  backdrop-filter:blur(18px);background:rgba(7,7,7,.72);border-bottom:1px solid var(--line);
+}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.06em;font-size:1.2rem}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;color:#bbb;font-size:.9rem}
+.nav-links a{transition:.25s}.nav-links a:hover{color:var(--accent)}
+.menu{display:none;background:none;border:0;color:white;font-size:1.4rem}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;position:relative}
+.hero-grid{
+  display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:end
+}
+.eyebrow{
+  color:var(--accent);font-size:.76rem;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:24px
+}
+h1{
+  font-family:"Space Grotesk";font-size:clamp(4rem,9vw,8.8rem);
+  line-height:.88;letter-spacing:-.075em;max-width:900px
+}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px #f3f1eb}
+.hero-copy{max-width:440px;color:#a8a8a1;font-size:1.05rem;margin-top:34px}
+.cta-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid var(--line);
+  border-radius:999px;transition:.25s;font-weight:600;font-size:.9rem
+}
+.btn.primary{background:var(--accent);color:#080808;border-color:var(--accent)}
+.btn:hover{transform:translateY(-2px)}
+.hero-card{
+  border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#141414,#0c0c0c);
+  padding:26px;min-height:310px;position:relative;overflow:hidden
+}
+.hero-card:after{
+  content:"CREATIVE / DIGITAL / VISUAL";position:absolute;right:-45px;bottom:30px;
+  transform:rotate(-90deg);font-size:.62rem;letter-spacing:.18em;color:#555
+}
+.orb{width:160px;height:160px;border-radius:50%;background:var(--accent);filter:blur(1px);position:absolute;right:-35px;top:-35px}
+.card-number{font-family:"Space Grotesk";font-size:4.8rem;letter-spacing:-.08em;position:relative;z-index:1}
+.card-label{color:#888;margin-top:10px;max-width:220px}
+.scroll-note{position:absolute;bottom:35px;left:0;color:#666;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase}
+
+.section{padding:120px 0;border-top:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:55px}
+.kicker{font-size:.72rem;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.section h2{font-family:"Space Grotesk";font-size:clamp(2.5rem,5vw,5rem);letter-spacing:-.065em;line-height:.95;margin-top:12px}
+.section-intro{max-width:390px;color:#92928c}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.about-text{font-size:1.3rem;line-height:1.5;color:#d2d0ca}
+.about-text strong{color:white}
+.fact-list{border-top:1px solid var(--line)}
+.fact{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.fact span:first-child{color:#666}.fact span:last-child{text-align:right;color:#ccc}
+
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project{
+  min-height:330px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;
+  transition:.35s;cursor:default
+}
+.project:hover{transform:translateY(-7px);border-color:rgba(215,255,69,.35)}
+.project:nth-child(2){min-height:410px}.project:nth-child(3){min-height:280px}
+.project:before{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);right:-70px;top:-70px
+}
+.tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.13em;color:var(--accent)}
+.project h3{font-family:"Space Grotesk";font-size:1.8rem;letter-spacing:-.045em;max-width:250px}
+.project p{color:#777;font-size:.88rem;max-width:280px;margin-top:8px}
+.arrow{font-size:1.2rem;color:#777}
+
+.skills{display:flex;flex-wrap:wrap;gap:10px}
+.skill{
+  padding:13px 17px;border:1px solid var(--line);border-radius:999px;color:#ccc;
+  transition:.25s;background:#0c0c0c
+}
+.skill:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+.timeline{display:grid;grid-template-columns:1fr 2fr;border-top:1px solid var(--line)}
+.timeline-row{display:contents}
+.timeline-row>div{padding:22px 0;border-bottom:1px solid var(--line)}
+.timeline .year{color:#666}.timeline .role{color:#ddd}
+
+.contact{
+  min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden
+}
+.contact h2{font-size:clamp(4rem,10vw,9rem);max-width:900px}
+.contact h2 span{color:var(--accent)}
+.contact-meta{margin-top:35px;color:#888;display:flex;gap:25px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:24px 0;color:#666;font-size:.78rem;display:flex;justify-content:space-between}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.cursor{
+  position:fixed;width:18px;height:18px;border:1px solid var(--accent);border-radius:50%;
+  pointer-events:none;z-index:100;transform:translate(-50%,-50%);mix-blend-mode:difference;
+  transition:width .2s,height .2s;display:none
+}
+@media (pointer:fine){.cursor{display:block}}
+@media(max-width:800px){
+  .container{width:min(var(--max),calc(100% - 28px))}
+  .nav-links{display:none}.menu{display:block}
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+  .hero{padding-top:115px}
+  .hero-card{min-height:240px}
+  .work-grid{grid-template-columns:1fr}
+  .project,.project:nth-child(2),.project:nth-child(3){min-height:280px}
+  .section{padding:85px 0}
+  .section-head{display:block}
+  .section-intro{margin-top:20px}
+  footer{display:block}.footer-right{margin-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#top">SANJIT<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </div>
+    <button class="menu" aria-label="Open menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile')">☰</button>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Video Editor · Graphic Designer · Writer</div>
+      <h1>Ideas into<br><em>visuals.</em></h1>
+      <p class="hero-copy">I work across video, graphic design, writing and digital creation — combining visual thinking with practical technology to turn ideas into clear, engaging work.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#work">Explore work ↗</a>
+        <a class="btn" href="#contact">Let's connect</a>
+      </div>
+    </div>
+    <div class="hero-card reveal">
+      <div class="orb"></div>
+      <div class="card-number">03</div>
+      <div class="card-label">Creative disciplines. One adaptable workflow.</div>
+      <div style="position:absolute;bottom:24px;color:#555;font-size:.72rem;letter-spacing:.12em">EDITOR / DESIGNER / WRITER</div>
+    </div>
+  </div>
+  <div class="container scroll-note">Scroll to explore ↓</div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">01 — About</div><h2>A creative<br>generalist.</h2></div>
+      <p class="section-intro">A portfolio built around visual communication, editing, design and the curiosity to learn new digital tools.</p>
+    </div>
+    <div class="about-grid">
+      <p class="about-text reveal">I'm <strong>Sanjit Rabidas</strong>, a creative professional focused on <strong>video editing, graphic design and writing</strong>. I also work with web fundamentals and everyday digital productivity tools, giving me a flexible base for creative and content-focused projects.</p>
+      <div class="fact-list reveal">
+        <div class="fact"><span>Focus</span><span>Visual storytelling & design</span></div>
+        <div class="fact"><span>Tools</span><span>Premiere Pro · After Effects · Photoshop · Canva</span></div>
+        <div class="fact"><span>Web</span><span>HTML · CSS · JavaScript</span></div>
+        <div class="fact"><span>Education</span><span>Advance Diploma in Computer Application</span></div>
+        <div class="fact"><span>Based in</span><span>West Bengal, India</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">02 — Capabilities</div><h2>What I<br>can make.</h2></div>
+      <p class="section-intro">The site intentionally keeps projects as flexible placeholders so only real work can be added later.</p>
+    </div>
+    <div class="work-grid">
+      <article class="project reveal">
+        <div class="tag">01 / Video</div>
+        <div><h3>Video Editing</h3><p>Short-form content, narrative edits, pacing, transitions, visual treatment and post-production workflows.</p></div>
+        <div class="arrow">↗</div>
+      </article>
+      <article class="project reveal">
+        <div class="tag">02 / Design</div>
+        <div><h3>Graphic Design</h3><p>Social creatives, posters, visual compositions, thumbnails and clean communication-focused layouts.</p></div>
+        <div class="arrow">↗</div>
+      </article>
+      <article class="project reveal">
+        <div class="tag">03 / Words</div>
+        <div><h3>Writing & Content</h3><p>Clear copy, creative ideas, scripts and content that support visual storytelling.</p></div>
+        <div class="arrow">↗</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">03 — Toolkit</div><h2>Tools &<br>skills.</h2></div>
+      <p class="section-intro">A practical toolkit spanning creative software, web basics and office productivity.</p>
+    </div>
+    <div class="skills reveal">
+      <span class="skill">Adobe Premiere Pro</span><span class="skill">After Effects</span>
+      <span class="skill">Photoshop</span><span class="skill">Canva</span><span class="skill">Video Editing</span>
+      <span class="skill">Graphic Design</span><span class="skill">Writing</span><span class="skill">HTML</span>
+      <span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">Microsoft Word</span>
+      <span class="skill">PowerPoint</span><span class="skill">Excel</span><span class="skill">MS Office</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="kicker">04 — Journey</div><h2>Learning<br>in progress.</h2></div>
+      <p class="section-intro">Education and skills are shown factually, without inventing experience or credentials.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-row"><div class="year">2018</div><div class="role">Madhyamik · West Bengal Board of Madrasah Education</div></div>
+      <div class="timeline-row"><div class="year">2020</div><div class="role">Higher Secondary · WBCHSE</div></div>
+      <div class="timeline-row"><div class="year">—</div><div class="role">B.A. Philosophy Honours · 4 semesters completed</div></div>
+      <div class="timeline-row"><div class="year">—</div><div class="role">Advance Diploma in Computer Application</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container reveal">
+    <div class="kicker">05 — Contact</div>
+    <h2>Have an idea?<br><span>Let's make it.</span></h2>
+    <p class="contact-meta">
+      <span>✦ Sanjit Rabidas</span><span>✦ Video / Design / Writing</span>
+      <!-- Replace the placeholders below with real links -->
+      <a href="#" onclick="return false">✦ Add Email</a>
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between">
+    <span>© <span id="year"></span> Sanjit Rabidas</span>
+    <span class="footer-right">Designed & coded as a personal portfolio.</span>
+  </div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor');
+window.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px';
+});
+document.querySelectorAll('a,.btn,.project,.skill').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.width='34px';cursor.style.height='34px'});
+  el.addEventListener('mouseleave',()=>{cursor.style.width='18px';cursor.style.height='18px'});
+});
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
+
+// Mobile nav
+const style=document.createElement('style');
+style.textContent=`@media(max-width:800px){.nav-links.mobile{display:flex;position:absolute;top:76px;left:0;right:0;padding:22px;flex-direction:column;background:rgba(7,7,7,.96);border-bottom:1px solid var(--line)}}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
